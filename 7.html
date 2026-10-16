@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Văn Học 12 - Kết Nối Tri Thức (VK-01) | Núi Rừng Tây Bắc</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22',
+                        },
+                        taybac: {
+                            dark: '#062c22',
+                            card: '#083b2d',
+                            leaf: '#10b981',
+                            gold: '#f59e0b',
+                            lightgold: '#fef3c7'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f0fdf4;
+            color: #0f172a;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .tab-panel { display: none; opacity: 0; transform: translateY(8px); transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out; }
+        .tab-panel.active { display: block; opacity: 1; transform: translateY(0); }
+
+        @keyframes windBreeze {
+            0% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(6px) rotate(0.8deg); }
+            100% { transform: translateX(0px) rotate(0deg); }
+        }
+        .wind-effect {
+            animation: windBreeze 4s ease-in-out infinite;
+        }
+
+        .intro-circle-glow {
+            box-shadow: 0 0 70px rgba(245, 158, 11, 0.5), inset 0 0 35px rgba(245, 158, 11, 0.3);
+        }
+
+        .card-taybac-border {
+            border: 2px solid rgba(245, 158, 11, 0.5);
+            border-radius: 36px;
+            box-shadow: 0 25px 50px -12px rgba(2, 44, 34, 0.6);
+        }
+
+        .btn-discovery-gradient {
+            background: linear-gradient(135deg, #047857 0%, #10b981 50%, #f59e0b 100%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+        }
+
+        .book-page-pink-border {
+            border: 12px solid #ecfdf5;
+            border-radius: 28px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .book-flip-anim {
+            animation: bookPageFlip 0.45s ease-in-out forwards;
+        }
+
+        @keyframes bookPageFlip {
+            0% { opacity: 0.3; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .bg-taybac-hero {
+            background-image: linear-gradient(to bottom, rgba(2, 44, 34, 0.8), rgba(6, 78, 59, 0.9)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-forest-500 selection:text-white">
+
+    <!-- 1. INTRO SPLASH SCREEN -->
+    <div id="intro-splash" class="fixed inset-0 z-50 bg-[#022c22] flex flex-col items-center justify-center text-center p-6 transition-opacity duration-700">
+        <div class="flex flex-col items-center space-y-8 animate-pulse wind-effect">
+            <div class="w-44 h-44 rounded-full border-4 border-taybac-gold flex flex-col items-center justify-center intro-circle-glow bg-[#011a14] relative">
+                <span class="font-serif font-black text-4xl text-taybac-gold tracking-wider">VK-01</span>
+                <i class="fa-solid fa-wind text-forest-300 text-sm mt-2"></i>
+            </div>
+            <h2 class="font-serif text-xl md:text-2xl font-bold text-taybac-lightgold tracking-[0.2em] uppercase">
+                HỒN VĂN TRONG NÉT TRÚC
+            </h2>
+        </div>
+    </div>
+
+    <!-- 2. CARD CHÍNH SAU INTRO -->
+    <div id="info-modal" class="fixed inset-0 z-40 bg-[#022c22]/95 backdrop-blur-md hidden flex items-center justify-center p-6 text-white transition-opacity duration-500">
+        <div class="relative max-w-xl w-full bg-[#064e3b] p-8 md:p-12 card-taybac-border text-center space-y-8 wind-effect">
+            
+            <div class="inline-flex items-center space-x-2 px-5 py-2 bg-[#022c22] text-taybac-lightgold border border-taybac-gold/50 rounded-full text-xs font-semibold uppercase tracking-wider shadow-inner">
+                <i class="fa-solid fa-graduation-cap text-taybac-gold"></i>
+                <span>PHẦN MỀM HỌC TẬP VK-01</span>
+            </div>
+
+            <div class="space-y-3">
+                <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-taybac-lightgold tracking-wide leading-tight">
+                    HỆ THỐNG HỌC TẬP<br>NGỮ VĂN 12
+                </h1>
+                <p class="text-sm md:text-base text-forest-200 font-medium tracking-wide pt-2">
+                    Bộ Sách Kết Nối Tri Thức Với Cuộc Sống
+                </p>
+            </div>
+
+            <div class="pt-4">
+                <button onclick="enterMainApp()" class="w-full py-4 text-white font-extrabold text-sm tracking-widest uppercase rounded-2xl btn-discovery-gradient transition-all transform hover:scale-105 active:scale-100 flex items-center justify-center space-x-3 cursor-pointer">
+                    <i class="fa-solid fa-wind text-taybac-gold"></i>
+                    <span>VÀO KHÁM PHÁ NGAY</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="main-app" class="flex-grow flex flex-col opacity-0 transition-opacity duration-500 bg-[#f0fdf4]">
+        
+        <!-- HEADER NAVIGATION -->
+        <header class="sticky top-0 z-40 bg-[#064e3b]/95 backdrop-blur-md border-b border-forest-700 text-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                
+                <div class="flex items-center space-x-3 whitespace-nowrap">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-taybac-gold via-forest-400 to-forest-800 text-taybac-dark font-serif font-extrabold flex items-center justify-center text-xs shadow-md border border-taybac-gold flex-shrink-0 wind-effect">
+                        VK-01
+                    </div>
+                    <div class="flex items-center space-x-2 whitespace-nowrap">
+                        <span class="font-serif font-bold text-taybac-lightgold text-base md:text-lg tracking-wide">Văn Học 12 - Tây Bắc Đại Ngàn</span>
+                        <i class="fa-solid fa-wind text-forest-300 text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Tabs -->
+                <nav class="hidden md:flex items-center space-x-1">
+                    <button onclick="switchTab('home')" id="nav-home" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-taybac-gold transition hover:bg-forest-800 cursor-pointer">Trang Chủ</button>
+                    <button onclick="switchTab('library')" id="nav-library" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-forest-100 transition hover:bg-forest-800 cursor-pointer">Thư Viện Tác Phẩm</button>
+                    <button onclick="switchTab('tips')" id="nav-tips" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-forest-100 transition hover:bg-forest-800 cursor-pointer">Mẹo & Kỹ Thuật Viết Văn</button>
+                    <button onclick="switchTab('practice')" id="nav-practice" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-forest-100 transition hover:bg-forest-800 cursor-pointer">Ôn Luyện & Đề Thi</button>
+                    <button onclick="switchTab('notes')" id="nav-notes" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-forest-100 transition hover:bg-forest-800 cursor-pointer">Sổ Tay Ghi Nhớ</button>
+                    <button onclick="switchTab('about')" id="nav-about" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-forest-100 transition hover:bg-forest-800 cursor-pointer">Giới Thiệu</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-forest-100 hover:text-taybac-gold text-xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Nav Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden bg-forest-900 border-b border-forest-800 px-4 py-3 space-y-2">
+                <button onclick="switchTab('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-taybac-gold">Trang Chủ</button>
+                <button onclick="switchTab('library'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-forest-100">Thư Viện Tác Phẩm</button>
+                <button onclick="switchTab('tips'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-forest-100">Mẹo Viết Văn</button>
+                <button onclick="switchTab('practice'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-forest-100">Ôn Luyện & Đề Thi</button>
+                <button onclick="switchTab('notes'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-forest-100">Sổ Tay Ghi Nhớ</button>
+                <button onclick="switchTab('about'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-forest-100">Giới Thiệu</button>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow">
+
+            <!-- TAB 1: TRANG CHỦ -->
+            <section id="tab-home" class="tab-panel active space-y-8">
+                <div class="relative rounded-3xl bg-taybac-hero text-white p-8 md:p-12 shadow-2xl border border-forest-600 overflow-hidden wind-effect">
+                    <div class="relative z-10 max-w-2xl space-y-4">
+                        <span class="inline-flex items-center space-x-1.5 px-3.5 py-1 bg-forest-800/90 text-taybac-lightgold border border-taybac-gold/40 rounded-full text-xs font-semibold tracking-wider uppercase">
+                            <i class="fa-solid fa-wind text-forest-300"></i>Hồn Văn Gió Núi Tây Bắc - VK-01
+                        </span>
+                        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
+                            Gió Ngàn Vẫy Gọi <span class="text-taybac-lightgold italic">Sắc Trúc Xanh</span>
+                        </h1>
+                        <p class="text-forest-100 text-sm leading-relaxed">
+                            Ứng dụng học tập môn Ngữ Văn 12 Kết Nối Tri Thức với tone màu xanh lá tươi tắn, ngập tràn sức sống và gió ngàn Tây Bắc. Tích hợp thư viện tác phẩm 2 trang chuẩn mực cùng cẩm nang viết văn NLVH & NLXH toàn diện.
+                        </p>
+                        <div class="pt-2 flex flex-wrap gap-4">
+                            <button onclick="switchTab('library')" class="px-6 py-3 bg-gradient-to-r from-forest-500 to-forest-700 text-taybac-lightgold font-bold rounded-xl text-xs transition shadow-lg flex items-center space-x-2 cursor-pointer border border-taybac-gold/40">
+                                <i class="fa-solid fa-book-open"></i><span>Đọc Sách Tác Phẩm</span>
+                            </button>
+                            <button onclick="switchTab('tips')" class="px-6 py-3 bg-forest-800 hover:bg-forest-900 text-taybac-lightgold border border-taybac-gold/40 font-bold rounded-xl text-xs transition flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-feather-pointed"></i><span>Mẹo Viết Văn (NLVH & NLXH)</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WIDGET ĐẾM NGƯỢC THỜI GIAN -->
+                <div class="bg-gradient-to-r from-forest-900 via-forest-800 to-forest-900 border border-taybac-gold/40 rounded-3xl p-6 md:p-8 text-white shadow-xl space-y-4">
+                    <div class="flex items-center justify-between flex-wrap gap-2 border-b border-forest-700 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-hourglass-start text-taybac-gold text-lg animate-pulse"></i>
+                            <h3 class="font-serif font-bold text-taybac-lightgold text-base md:text-lg">Đếm Ngược Thời Gian Đến Kỳ Thi Tốt Nghiệp THPT</h3>
+                        </div>
+                        <span class="text-xs text-forest-200 italic"><i class="fa-solid fa-calendar-days mr-1"></i>Mục tiêu: Đỗ Đại học nguyện vọng 1</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                        <div class="bg-forest-800/90 p-4 rounded-2xl border border-forest-600 shadow-inner">
+                            <span id="countdown-days" class="font-serif text-3xl md:text-4xl font-extrabold text-taybac-gold">00</span>
+                            <p class="text-xs text-forest-200 mt-1 uppercase font-semibold">Ngày</p>
+                        </div>
+                        <div class="bg-forest-800/90 p-4 rounded-2xl border border-forest-600 shadow-inner">
+                            <span id="countdown-hours" class="font-serif text-3xl md:text-4xl font-extrabold text-taybac-lightgold">00</span>
+                            <p class="text-xs text-forest-200 mt-1 uppercase font-semibold">Giờ</p>
+                        </div>
+                        <div class="bg-forest-800/90 p-4 rounded-2xl border border-forest-600 shadow-inner">
+                            <span id="countdown-mins" class="font-serif text-3xl md:text-4xl font-extrabold text-taybac-lightgold">00</span>
+                            <p class="text-xs text-forest-200 mt-1 uppercase font-semibold">Phút</p>
+                        </div>
+                        <div class="bg-forest-800/90 p-4 rounded-2xl border border-forest-600 shadow-inner">
+                            <span id="countdown-secs" class="font-serif text-3xl md:text-4xl font-extrabold text-taybac-lightgold">00</span>
+                            <p class="text-xs text-forest-200 mt-1 uppercase font-semibold">Giây</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. TAB THƯ VIỆN TÁC PHẨM (SÁCH 2 TRANG - ĐÃ BỎ CHỮ TRANG TRÁI / TRANG PHẢI) -->
+            <section id="tab-library" class="tab-panel space-y-4">
+                
+                <div class="relative flex items-center justify-between border-b border-forest-200 pb-3">
+                    <div class="relative">
+                        <button onclick="toggleTocMenu()" class="px-5 py-2.5 rounded-2xl bg-white border border-forest-300 text-forest-900 font-semibold text-sm shadow-sm hover:bg-forest-50 transition flex items-center space-x-3 cursor-pointer">
+                            <i class="fa-solid fa-list-ul text-forest-600"></i>
+                            <span>Mục lục</span>
+                            <i id="toc-chevron" class="fa-solid fa-chevron-down text-xs text-forest-500 transition-transform"></i>
+                        </button>
+
+                        <div id="toc-dropdown-menu" class="hidden absolute left-0 top-12 z-50 w-80 bg-white border border-forest-200 rounded-2xl shadow-2xl p-2 max-h-96 overflow-y-auto space-y-1">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <span id="current-work-badge" class="font-serif font-bold text-base md:text-lg text-forest-900">
+                        Tác phẩm hiện tại
+                    </span>
+                </div>
+
+                <div class="relative flex items-center justify-center my-4 py-2">
+                    
+                    <button onclick="prevBookPage()" class="absolute left-1 md:left-4 z-30 w-12 h-12 rounded-full bg-white border border-forest-300 text-forest-800 shadow-xl flex items-center justify-center text-xl hover:bg-forest-50 transition cursor-pointer transform hover:scale-110">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <div id="book-two-pages" class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 px-4 md:px-12">
+                        
+                        <!-- TRANG TRÁI (Đã gỡ bỏ nhãn Trang trái) -->
+                        <div class="book-page-pink-border bg-white p-6 md:p-8 min-h-[500px] flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <div class="border-b border-forest-100 pb-2 flex items-center justify-between">
+                                    <span id="page-left-category" class="text-[11px] font-bold text-forest-700 uppercase tracking-wider">Thể loại</span>
+                                </div>
+
+                                <h2 id="page-left-title" class="font-serif text-2xl font-bold text-forest-950">
+                                    Tên Tác Giả
+                                </h2>
+
+                                <div class="space-y-3 pt-2">
+                                    <h4 class="text-xs font-bold text-forest-800 uppercase tracking-wider flex items-center">
+                                        <i class="fa-solid fa-user-pen mr-2 text-forest-600"></i>Tiểu sử & Phong cách nghệ thuật
+                                    </h4>
+                                    <ul id="page-left-content-list" class="space-y-2 text-xs md:text-sm text-gray-700 leading-relaxed"></ul>
+                                </div>
+                            </div>
+
+                            <div class="text-[10px] text-forest-400 text-center border-t border-forest-100 pt-2 font-serif italic">
+                                Học phần kiến thức chuẩn SGK Ngữ Văn 12 KNTT
+                            </div>
+                        </div>
+
+                        <!-- TRANG PHẢI (Đã gỡ bỏ nhãn Trang phải) -->
+                        <div class="book-page-pink-border bg-white p-6 md:p-8 min-h-[500px] flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <div class="border-b border-forest-100 pb-2 flex items-center justify-end">
+                                    <span id="page-right-work-code" class="text-[11px] font-bold text-taybac-gold uppercase tracking-wider">VK-01</span>
+                                </div>
+
+                                <h2 id="page-right-title" class="font-serif text-2xl font-bold text-forest-950">
+                                    Tên Tác Phẩm
+                                </h2>
+
+                                <div class="space-y-3 overflow-y-auto max-h-[360px] pr-1">
+                                    <div class="p-3 bg-forest-50/50 rounded-xl border border-forest-100 space-y-1">
+                                        <h4 class="text-xs font-bold text-forest-900 flex items-center">
+                                            <i class="fa-solid fa-file-lines text-forest-600 mr-1.5"></i>Tóm tắt cốt truyện / Khái quát:
+                                        </h4>
+                                        <ul id="page-right-summary-list" class="space-y-1 text-xs text-gray-700 leading-relaxed"></ul>
+                                    </div>
+
+                                    <div class="p-3 bg-forest-50/50 rounded-xl border border-forest-100 space-y-1">
+                                        <h4 class="text-xs font-bold text-forest-900 flex items-center">
+                                            <i class="fa-solid fa-gem text-forest-600 mr-1.5"></i>Giá trị nội dung & Tư tưởng:
+                                        </h4>
+                                        <ul id="page-right-content-list" class="space-y-1 text-xs text-gray-700 leading-relaxed"></ul>
+                                    </div>
+
+                                    <div class="p-3 bg-forest-50/50 rounded-xl border border-forest-100 space-y-1">
+                                        <h4 class="text-xs font-bold text-forest-900 flex items-center">
+                                            <i class="fa-solid fa-palette text-forest-600 mr-1.5"></i>Đặc sắc nghệ thuật:
+                                        </h4>
+                                        <ul id="page-right-art-list" class="space-y-1 text-xs text-gray-700 leading-relaxed"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-[10px] text-forest-400 text-center border-t border-forest-100 pt-2 font-serif italic">
+                                Tác phẩm trọng tâm ôn thi Tốt nghiệp THPT 2027
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button onclick="nextBookPage()" class="absolute right-1 md:right-4 z-30 w-12 h-12 rounded-full bg-white border border-forest-300 text-forest-800 shadow-xl flex items-center justify-center text-xl hover:bg-forest-50 transition cursor-pointer transform hover:scale-110">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- 3. TAB MẸO & KỸ THUẬT VIẾT VĂN: CHIA LÀM 2 PHẦN (NLVH & NLXH VỚI DÀN Ý CHI TIẾT MỚI) -->
+            <section id="tab-tips" class="tab-panel space-y-8">
+                <div>
+                    <h2 class="font-serif text-3xl font-bold text-forest-950 flex items-center">
+                        <i class="fa-solid fa-feather-pointed text-forest-600 mr-3"></i>Cẩm Nang & Dàn Ý Chi Tiết Viết Văn 8+ (Chính Thức)
+                    </h2>
+                    <p class="text-xs text-forest-800 mt-1">Được chuẩn hóa chi tiết thành 2 phần rõ rệt: Nghị Luận Văn Học (NLVH) và Nghị Luận Xã Hội (NLXH).</p>
+                </div>
+
+                <!-- THANH CHUYỂN ĐỔI 2 PHẦN -->
+                <div class="flex flex-wrap gap-3 bg-forest-200/70 p-2 rounded-2xl border border-forest-300">
+                    <button onclick="switchTipsTab('nlvh')" id="btn-tip-nlvh" class="flex-1 py-3 px-4 rounded-xl text-xs md:text-sm font-extrabold transition bg-forest-800 text-white shadow-md cursor-pointer flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-book-bookmark"></i><span>1. Nghị Luận Văn Học (NLVH) - Dàn Ý Chi Tiết</span>
+                    </button>
+                    <button onclick="switchTipsTab('nlxh')" id="btn-tip-nlxh" class="flex-1 py-3 px-4 rounded-xl text-xs md:text-sm font-extrabold transition text-forest-900 hover:bg-forest-300 cursor-pointer flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-users-rectangle"></i><span>2. Nghị Luận Xã Hội (NLXH) - Dàn Ý Chi Tiết</span>
+                    </button>
+                </div>
+
+                <!-- PHẦN 1: DÀN Ý NGHỊ LUẬN VĂN HỌC (NLVH) -->
+                <div id="content-tip-nlvh" class="tips-sub-panel space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Mở bài -->
+                        <div class="bg-white p-6 rounded-3xl border border-forest-200 shadow-md space-y-4">
+                            <div class="flex items-center space-x-3 border-b border-forest-100 pb-3">
+                                <div class="w-10 h-10 rounded-2xl bg-forest-600 text-taybac-lightgold flex items-center justify-center text-lg font-bold">I</div>
+                                <div>
+                                    <h3 class="font-serif font-bold text-forest-950 text-base">1. Mở Bài (3 Ý Chuẩn)</h3>
+                                    <p class="text-[11px] text-forest-600">Dẫn dắt mượt mà, định hướng đề bài</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-xs text-gray-700 leading-relaxed">
+                                <div class="p-3 bg-forest-50/60 rounded-xl border border-forest-100 space-y-1">
+                                    <span class="font-bold text-forest-800 block">Ý 1: Dẫn dắt vấn đề</span>
+                                    <p>Nêu nhận định lý luận văn học, phong cách nhà văn hoặc thời đại văn học liên quan.</p>
+                                </div>
+                                <div class="p-3 bg-forest-50/60 rounded-xl border border-forest-100 space-y-1">
+                                    <span class="font-bold text-forest-800 block">Ý 2: Giới thiệu tác giả, tác phẩm</span>
+                                    <p>Giới thiệu tên nhà văn, tác phẩm và hoàn cảnh sáng tác / xuất xứ đoạn trích.</p>
+                                </div>
+                                <div class="p-3 bg-forest-50/60 rounded-xl border border-forest-100 space-y-1">
+                                    <span class="font-bold text-forest-800 block">Ý 3: Nêu nhiệm vụ nghị luận</span>
+                                    <p>Trích dẫn trực tiếp đoạn văn/thơ và nêu định hướng phân tích.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thân bài -->
+                        <div class="bg-white p-6 rounded-3xl border border-forest-200 shadow-md space-y-4 lg:col-span-2">
+                            <div class="flex items-center space-x-3 border-b border-forest-100 pb-3">
+                                <div class="w-10 h-10 rounded-2xl bg-forest-600 text-taybac-lightgold flex items-center justify-center text-lg font-bold">II</div>
+                                <div>
+                                    <h3 class="font-serif font-bold text-forest-950 text-base">2. Thân Bài Chuyên Sâu (4 Luận Điểm Trọng Tâm)</h3>
+                                    <p class="text-[11px] text-forest-600">Khái quát -> Phân tích chi tiết -> Đánh giá nghệ thuật -> Liên hệ so sánh</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-700">
+                                <div class="p-3 bg-forest-50/60 rounded-xl border border-forest-100 space-y-1">
+                                    <span class="font-bold text-forest-800 block">Luận điểm 1: Khái quát chung</span>
+                                    <p>Vị trí đoạn trích, không gian/thời gian nghệ thuật, mạch cảm xúc hoặc cốt truyện bao quát.</p>
+                                </div>
+                                <div class="p-3 bg-forest-50/60 rounded-xl border border-forest-100 space-y-1">
+                                    <span class="font-bold text-forest-800 block">Luận điểm 2: Phân tích chi tiết nội dung</span>
+                                    <p>Chia 2-3 tiểu luận điểm nhỏ. Bám sát từ ngữ, hình ảnh, diễn biến tâm lý nhân vật hoặc bức tranh thiên nhiên để làm rõ tư tưởng.</p>
+                                </div>
+                                <div class="p-3 bg-forest-50/60 rounded-xl border border-forest-100 space-y-1">
+                                    <span class="font-bold text-forest-800 block">Luận điểm 3: Đánh giá nghệ thuật</span>
+                                    <p>Tổng kết đặc sắc nghệ thuật: Thể thơ, bút pháp lãng mạn/hiện thực, giọng điệu, hệ thống biểu tượng.</p>
+                                </div>
+                                <div class="p-3 bg-forest-50/60 rounded-xl border border-forest-100 space-y-1">
+                                    <span class="font-bold text-forest-800 block">Luận điểm 4: Bình luận & Liên hệ mở rộng</span>
+                                    <p>Đánh giá thông điệp tác giả gửi gắm. Liên hệ so sánh với tác phẩm/chi tiết cùng đề tài để làm nổi bật phong cách.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Kết bài NLVH -->
+                    <div class="bg-white p-6 rounded-3xl border border-forest-200 shadow-md space-y-3">
+                        <div class="flex items-center space-x-3 border-b border-forest-100 pb-2">
+                            <div class="w-8 h-8 rounded-xl bg-forest-600 text-taybac-lightgold flex items-center justify-center text-sm font-bold">III</div>
+                            <h3 class="font-serif font-bold text-forest-950 text-base">3. Kết Bài</h3>
+                        </div>
+                        <p class="text-xs text-gray-700 leading-relaxed">
+                            Khái quát lại giá trị tư tưởng và nghệ thuật bền vững của đoạn trích/tác phẩm. Nêu ấn tượng sâu sắc của bản thân và bài học rút ra cho quá trình tiếp nhận văn học cũng như cuộc sống.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PHẦN 2: DÀN Ý NGHỊ LUẬN XÃ HỘI (NLXH - HOÀN TOÀN MỚI, CHI TIẾT & CHUẨN XÁC) -->
+                <div id="content-tip-nlxh" class="tips-sub-panel hidden space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Mở đoạn NLXH -->
+                        <div class="bg-white p-6 rounded-3xl border border-forest-200 shadow-md space-y-4">
+                            <div class="flex items-center space-x-3 border-b border-forest-100 pb-3">
+                                <div class="w-10 h-10 rounded-2xl bg-amber-600 text-white flex items-center justify-center text-lg font-bold">I</div>
+                                <div>
+                                    <h3 class="font-serif font-bold text-forest-950 text-base">1. Mở Đoạn / Mở Bài</h3>
+                                    <p class="text-[11px] text-forest-600">Giới thiệu trực tiếp hoặc gián tiếp vấn đề</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-xs text-gray-700 leading-relaxed">
+                                <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-100 space-y-1">
+                                    <span class="font-bold text-amber-900 block">Cách 1: Trực tiếp</span>
+                                    <p>Nêu thẳng vấn đề tư tưởng đạo lí hoặc hiện tượng đời sống từ đề bài (Ví dụ: Lòng biết ơn là cội nguồn của mọi phẩm chất cao đẹp...).</p>
+                                </div>
+                                <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-100 space-y-1">
+                                    <span class="font-bold text-amber-900 block">Cách 2: Gián tiếp</span>
+                                    <p>Dẫn dắt qua câu chuyện ngắn, câu danh ngôn, hình ảnh biểu tượng hoặc câu thơ có nét tương đồng.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thân đoạn / Thân bài NLXH -->
+                        <div class="bg-white p-6 rounded-3xl border border-forest-200 shadow-md space-y-4 lg:col-span-2">
+                            <div class="flex items-center space-x-3 border-b border-forest-100 pb-3">
+                                <div class="w-10 h-10 rounded-2xl bg-amber-600 text-white flex items-center justify-center text-lg font-bold">II</div>
+                                <div>
+                                    <h3 class="font-serif font-bold text-forest-950 text-base">2. Thân Đoạn / Thân Bài (4 Bước Triển Khai Vàng)</h3>
+                                    <p class="text-[11px] text-forest-600">Giải thích -> Bàn luận -> Dẫn chứng thực tế -> Phản đề</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-700">
+                                <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-100 space-y-1">
+                                    <span class="font-bold text-amber-900 block">Bước A: Giải thích khái niệm</span>
+                                    <p>Làm rõ nghĩa từ ngữ, ý nghĩa câu nói, biểu hiện cốt lõi của hiện tượng đời sống được yêu cầu.</p>
+                                </div>
+                                <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-100 space-y-1">
+                                    <span class="font-bold text-amber-900 block">Bước B: Bàn luận & Phân tích nguyên nhân</span>
+                                    <p>Trả lời câu hỏi: Vì sao? Biểu hiện thực tế ra sao? Tác động tích cực hoặc tiêu cực đối với con người và xã hội.</p>
+                                </div>
+                                <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-100 space-y-1">
+                                    <span class="font-bold text-amber-900 block">Bước C: Đưa dẫn chứng thực tế</span>
+                                    <p>Lấy ví dụ điển hình, người thật việc thật tiêu biểu, có sức thuyết phục cao, xác thực trong nước hoặc quốc tế.</p>
+                                </div>
+                                <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-100 space-y-1">
+                                    <span class="font-bold text-amber-900 block">Bước D: Phản đề & Bài học nhận thức</span>
+                                    <p>Phê phán thói hư tật xấu trái ngược (ích kỷ, vô cảm, cực đoan). Rút ra bài học hành động thiết thực cho bản thân.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Kết đoạn NLXH -->
+                    <div class="bg-white p-6 rounded-3xl border border-forest-200 shadow-md space-y-3">
+                        <div class="flex items-center space-x-3 border-b border-forest-100 pb-2">
+                            <div class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center text-sm font-bold">III</div>
+                            <h3 class="font-serif font-bold text-forest-950 text-base">3. Kết Đoạn / Kết Bài</h3>
+                        </div>
+                        <p class="text-xs text-gray-700 leading-relaxed">
+                            Khẳng định lại tầm quan trọng của vấn đề tư tưởng/hiện tượng đối với đời sống hiện đại. Gửi gắm thông điệp kêu gọi hành động ý nghĩa đến cộng đồng và thế hệ trẻ.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- 4. TAB TRẮC NGHIỆM ÔN LUYỆN -->
+            <section id="tab-practice" class="tab-panel space-y-6">
+                <div>
+                    <h2 class="font-serif text-2xl font-bold text-forest-900">Hệ Thống Ôn Luyện & Đề Thi</h2>
+                    <p class="text-xs text-forest-700">Rèn luyện kỹ năng trắc nghiệm chuẩn hóa cấu trúc thi THPT Quốc gia môn Ngữ Văn.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-forest-200 space-y-4 shadow-sm">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center text-lg"><i class="fa-solid fa-list-check"></i></div>
+                            <div>
+                                <h3 class="font-serif font-bold text-forest-900 text-base">Chế Độ 1: Ôn Tập Theo Tác Phẩm</h3>
+                                <p class="text-[11px] text-forest-600">Ngân hàng câu hỏi trắc nghiệm chi tiết cho từng bài</p>
+                            </div>
+                        </div>
+                        <select id="practice-select-work" class="w-full p-2.5 rounded-xl border border-forest-300 bg-forest-50/50 text-xs font-semibold text-forest-900 focus:outline-none focus:border-forest-600">
+                            <!-- Populated dynamically via JS -->
+                        </select>
+                        <button onclick="startWorkQuiz()" class="w-full py-2.5 bg-forest-600 hover:bg-forest-700 text-white font-bold text-xs rounded-xl transition cursor-pointer shadow-md">
+                            Bắt Đầu Ôn Luyện (10 Câu)
+                        </button>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-forest-900 to-forest-950 text-white p-6 rounded-2xl border border-taybac-gold/40 space-y-4 shadow-xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-forest-800 text-taybac-lightgold flex items-center justify-center text-lg"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h3 class="font-serif font-bold text-taybac-lightgold text-base">Chế Độ 2: Đề Thi Thử Tổng Hợp</h3>
+                                <p class="text-[11px] text-forest-200">30 câu ngẫu nhiên • Thời gian: 45 phút</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-forest-100">Đề thi trộn xáo từ ngân hàng câu hỏi đầy đủ các tác phẩm, có tính giờ tự động và chấm điểm kèm nhận xét chi tiết.</p>
+                        <button onclick="startRandomExam()" class="w-full py-2.5 bg-gradient-to-r from-taybac-gold to-forest-500 text-taybac-dark font-extrabold text-xs rounded-xl transition cursor-pointer shadow-md">
+                            Bắt Đầu Thi Thử Tổng Hợp (30 Câu)
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-container" class="hidden bg-white p-6 md:p-8 rounded-3xl border border-forest-300 shadow-xl space-y-6">
+                    <div class="flex items-center justify-between border-b border-forest-200 pb-4">
+                        <div>
+                            <span id="quiz-mode-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-forest-100 text-forest-800 uppercase">Chế độ ôn tập</span>
+                            <h3 id="quiz-title" class="font-serif text-xl font-bold text-forest-900 mt-1">Tên Bài Thi</h3>
+                        </div>
+                        <div id="quiz-timer" class="hidden font-mono text-base font-bold text-forest-900 bg-forest-100 px-4 py-2 rounded-xl border border-forest-300">
+                            <i class="fa-solid fa-stopwatch text-forest-700 mr-1"></i><span id="timer-text">45:00</span>
+                        </div>
+                    </div>
+
+                    <div id="quiz-questions-list" class="space-y-6"></div>
+
+                    <div class="pt-4 border-t border-forest-200 flex justify-end">
+                        <button onclick="submitQuiz()" class="px-8 py-3 bg-forest-700 hover:bg-forest-800 text-white font-bold text-xs rounded-xl transition cursor-pointer shadow-md">
+                            Nộp Bài & Chấm Điểm
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-result" class="hidden bg-white p-8 rounded-3xl border border-forest-300 text-center space-y-4 shadow-xl">
+                    <div class="inline-block p-4 rounded-full bg-forest-100 text-forest-700 text-3xl"><i class="fa-solid fa-trophy text-taybac-gold"></i></div>
+                    <h3 class="font-serif text-2xl font-bold text-forest-900">Kết Quả Bài Thi</h3>
+                    <p id="result-text" class="text-base font-bold text-forest-700">Bạn trả lời đúng: 0 / 0 câu</p>
+                    <p id="result-feedback" class="text-xs text-forest-800 italic">Nhận xét hệ thống...</p>
+                    <button onclick="closeQuizResult()" class="px-6 py-2.5 bg-forest-900 text-white text-xs font-bold rounded-xl hover:bg-forest-800 transition cursor-pointer">Hoàn Thành</button>
+                </div>
+            </section>
+
+            <!-- 5. TAB SỔ TAY GHI NHỚ -->
+            <section id="tab-notes" class="tab-panel space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <h2 class="font-serif text-2xl font-bold text-forest-900">Sổ Tay Ghi Nhớ</h2>
+                        <p class="text-xs text-forest-700">Ghi chép các ý tưởng quan trọng và từ khóa ôn thi Ngữ Văn 12 cá nhân.</p>
+                    </div>
+                    <button onclick="openNewNoteModal()" class="px-4 py-2.5 bg-forest-600 hover:bg-forest-700 text-white font-bold text-xs rounded-xl transition flex items-center space-x-2 cursor-pointer shadow">
+                        <i class="fa-solid fa-plus"></i><span>Tạo Ghi Chép Mới</span>
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-3xl border border-forest-200 overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[450px] shadow-lg">
+                    <div class="md:col-span-4 bg-forest-50/50 p-4 border-r border-forest-200 space-y-3">
+                        <h4 class="text-xs font-bold text-forest-700 uppercase tracking-wider">Danh Sách Mục Ghi Nhớ</h4>
+                        <div id="notes-channels-list" class="space-y-1"></div>
+                    </div>
+
+                    <div class="md:col-span-8 p-6 flex flex-col justify-between space-y-4">
+                        <div class="border-b border-forest-200 pb-3">
+                            <h3 id="current-note-title" class="font-serif font-bold text-lg text-forest-950">Chọn mục để xem ghi nhớ</h3>
+                            <p id="current-note-desc" class="text-xs text-forest-600">Sổ tay kiến thức Ngữ Văn 12 cá nhân.</p>
+                        </div>
+
+                        <div id="notes-messages-container" class="flex-grow overflow-y-auto max-h-[300px] space-y-3 pr-2"></div>
+
+                        <form onsubmit="handleSendNoteMessage(event)" class="flex gap-2">
+                            <input type="text" id="note-user-name" placeholder="Tên/Người ghi..." class="w-1/3 p-2.5 rounded-xl border border-forest-300 bg-forest-50/30 text-xs focus:outline-none focus:border-forest-600" required>
+                            <input type="text" id="note-user-msg" placeholder="Nhập ghi chú / từ khóa quan trọng..." class="w-2/3 p-2.5 rounded-xl border border-forest-300 bg-forest-50/30 text-xs focus:outline-none focus:border-forest-600" required>
+                            <button type="submit" class="px-4 py-2.5 bg-forest-600 hover:bg-forest-700 text-white font-bold text-xs rounded-xl transition cursor-pointer">
+                                <i class="fa-solid fa-pen-clip"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. TAB GIỚI THIỆU -->
+            <section id="tab-about" class="tab-panel space-y-6">
+                <div class="max-w-3xl mx-auto bg-white p-8 rounded-3xl border border-forest-300 shadow-lg space-y-6">
+                    <div class="text-center space-y-2 border-b border-forest-200 pb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-forest-600 text-taybac-lightgold text-2xl font-serif font-bold mb-2 shadow wind-effect">VK-01</div>
+                        <h2 class="font-serif text-2xl font-bold text-forest-900">Phần Mềm Học Tập Ngữ Văn 12 - VK-01</h2>
+                        <p class="text-xs font-semibold text-forest-600">Bộ Sách Kết Nối Tri Thức Với Cuộc Sống (Phiên Bản Gió Núi Tây Bắc)</p>
+                    </div>
+
+                    <div class="space-y-4 text-xs text-forest-900 leading-relaxed">
+                        <h3 class="font-serif font-bold text-sm text-forest-950">Mục Tiêu Sản Phẩm:</h3>
+                        <p>Ứng dụng **Văn Học 12 (VK-01)** được phát triển nhằm hỗ trợ học sinh hệ thống hóa kiến thức các tác phẩm Ngữ Văn trọng tâm dưới dạng sách đọc 2 trang sinh động, nắm vững kỹ năng phân tích văn học NLVH và NLXH để ôn thi Tốt nghiệp THPT đạt kết quả cao nhất.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-forest-950 text-forest-200 border-t border-forest-800 py-6 text-center text-xs space-y-1">
+            <p class="font-bold text-taybac-lightgold">Hệ Thống Học Tập Ngữ Văn 12 - Mã VK-01 (Phiên Bản Gió Tây Bắc)</p>
+            <p class="text-[10px] text-forest-400">© 2026 - 2027 Bộ sách Kết Nối Tri Thức Với Cuộc Sống.</p>
+        </footer>
+    </div>
+
+    <!-- MODAL TẠO MỤC SỔ TAY GHI NHỚ MỚI -->
+    <div id="modal-note" class="fixed inset-0 z-50 bg-forest-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white max-w-md w-full p-6 rounded-3xl border border-forest-300 shadow-2xl space-y-4">
+            <h3 class="font-serif font-bold text-lg text-forest-900">Tạo Mục Sổ Tay Mới</h3>
+            <form onsubmit="handleCreateNote(event)" class="space-y-3">
+                <div>
+                    <label class="text-xs font-bold text-forest-800">Tên mục ghi nhớ:</label>
+                    <input type="text" id="new-note-title" placeholder="Ví dụ: Dẫn chứng hot cho bài NLXH về ước mơ" class="w-full p-2.5 rounded-xl border border-forest-300 bg-forest-50/30 text-xs mt-1 focus:outline-none focus:border-forest-600" required>
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-forest-800">Mô tả ngắn:</label>
+                    <textarea id="new-note-desc" rows="3" placeholder="Mô tả nội dung bạn muốn lưu trữ..." class="w-full p-2.5 rounded-xl border border-forest-300 bg-forest-50/30 text-xs mt-1 focus:outline-none focus:border-forest-600" required></textarea>
+                </div>
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeNewNoteModal()" class="px-4 py-2 bg-forest-100 text-forest-800 text-xs font-bold rounded-xl">Hủy</button>
+                    <button type="submit" class="px-5 py-2 bg-forest-600 text-white text-xs font-bold rounded-xl">Tạo Mục Ghi Nhớ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- APPLICATION LOGIC -->
+    <script>
+        const worksDatabase = [
+            {
+                id: 0,
+                title: "Xuân Tóc Đỏ Cứu Quốc",
+                author: "Vũ Trọng Phụng (Trích 'Số Đỏ')",
+                genre: "Tiểu thuyết trào phúng",
+                isUpdating: false,
+                authorSec: [
+                    "Vũ Trọng Phụng (1912 - 1939) là nhà văn kiệt xuất của văn học hiện thực trước 1945.",
+                    "Được mệnh danh là 'Ông vua văn xôi Bắc Kỳ' với ngòi bút trào phúng sắc bén.",
+                    "Sở trường bóc trần sự giả tạo, hợm hĩnh của tầng lớp tư sản Âu hóa thời thực dân."
+                ],
+                summarySec: [
+                    "Đoạn trích thuật lại trận thi đấu quần vợt giữa hai vận động viên Việt - Xiêm.",
+                    "Xuân Tóc Đỏ được lệnh phải thua để giữ hòa khí ngoại giao giữa hai nước.",
+                    "Quần chúng phẫn nộ đòi bạo động, Xuân Tóc Đỏ leo lên khán đài diễn thuyết bịp bợm.",
+                    "Hắn biến sự nhượng bộ cá nhân thành hành động 'cứu quốc' vĩ đại, được tung hô như anh hùng."
+                ],
+                contentSec: [
+                    "Phơi bày bản chất lố lăng, xảo ngôn và bịp bợm của Xuân Tóc Đỏ.",
+                    "Vạch trần sự ngu muội, dễ bị thao túng của đám đông quần chúng thành thị Âu hóa.",
+                    "Đả kích sâu sắc bộ mặt giả tạo của chính quyền thực dân và giới thượng lưu thời bấy giờ."
+                ],
+                artSec: [
+                    "Mâu thuẫn trào phúng bùng nổ kịch tính và bất ngờ.",
+                    "Nghệ thuật phóng đại, ngào nặn nhân vật mang tính hề hước đỉnh cao.",
+                    "Ngôn ngữ nhân vật đậm chất khẩu ngữ, mỉa mai hóm hỉnh."
+                ]
+            },
+            {
+                id: 1,
+                title: "Giấu Của",
+                author: "Tô Hoài",
+                genre: "Truyện ngắn hiện thực",
+                isUpdating: false,
+                authorSec: [
+                    "Tô Hoài là cây đại thụ của văn học Việt Nam với vốn hiểu biết phong phú về phong tục đời sống.",
+                    "Ngòi bút miêu tả tinh tế, am hiểu sâu sắc tâm lý con người nông thôn và đô thị.",
+                    "Văn phong đậm đà màu sắc dân gian, hóm hỉnh mà sâu cay."
+                ],
+                summarySec: [
+                    "Kể về câu chuyện dở khóc dở cười xoay quanh việc cất giấu tài sản, của cải của nhân vật.",
+                    "Tâm lý lo âu, phấp phỏng và sự đa nghi sinh ra từ việc sở hữu của cải.",
+                    "Cái kết bất ngờ giúp nhân vật nhận ra bài học thấm thía về thái độ đối với vật chất."
+                ],
+                contentSec: [
+                    "Mỉa mai, châm biếm thói ích kỷ, keo kiệt và sự ám ảnh mù quáng vì tiền tài vật chất.",
+                    "Khẳng định of cải lớn nhất của con người là sự thanh thản trong tâm hồn và tình nghĩa.",
+                    "Bài học nhân sinh về cách nhìn nhận đúng đắn giữa vật chất và hạnh phúc tinh thần."
+                ],
+                artSec: [
+                    "Nghệ thuật xây dựng cốt truyện giản dị nhưng giàu ý nghĩa ngụ ngôn.",
+                    "Ngôn ngữ kể chuyện đậm chất khẩu ngữ, gần gũi và giàu hình ảnh.",
+                    "Khắc họa tâm lý nhân vật sống động, chân thực."
+                ]
+            },
+            {
+                id: 2,
+                title: "Nhân Vật Quan Trọng",
+                author: "Nguyễn Khải",
+                genre: "Truyện ngắn hiện đại",
+                isUpdating: false,
+                authorSec: [
+                    "Nguyễn Khải là nhà văn tiêu biểu của văn học Việt Nam hiện đại.",
+                    "Ngòi bút sắc sảo, có sở trường phân tích tâm lý nhân vật trong các mối quan hệ xã hội phức tạp.",
+                    "Thường hướng tới những trăn trở về lẽ sống, trách nhiệm và nhân cách con người."
+                ],
+                summarySec: [
+                    "Tác phẩm xoay quanh những tình huống đời thường nhưng mang ý nghĩa triết lý sâu sắc về vị thế cá nhân.",
+                    "Nhân vật tự cho mình là 'quan trọng' và những góc khuất trong cách nhìn nhận đánh giá từ người xung quanh.",
+                    "Qua đó thức tỉnh con người về sự khiêm nhường và bản chất thực sự của giá trị sống."
+                ],
+                contentSec: [
+                    "Phê phán bệnh ảo tưởng danh vọng, sự kiêu ngạo và thói hình thức trong đời sống.",
+                    "Khẳng định giá trị đích thực của con người nằm ở phẩm chất, sự cống hiến âm thầm chứ không phải chức vụ.",
+                    "Đề cao lòng nhân ái, sự thấu hiểu và cách ứng xử chân thành giữa người với người."
+                ],
+                artSec: [
+                    "Nghệ thuật xây dựng tình huống truyện mang tính phát hiện.",
+                    "Miêu tả tâm lý nhân vật sắc sảo, sinh động và chân thực.",
+                    "Giọng văn đan xen giữa trào phúng nhẹ nhàng và chiêm nghiệm sâu lắng."
+                ]
+            },
+            {
+                id: 3,
+                title: "Muối Của Rừng",
+                author: "Nguyễn Huy Thiệp",
+                genre: "Truyện ngắn hiện đại",
+                isUpdating: false,
+                authorSec: [
+                    "Nguyễn Huy Thiệp là cây bút đổi mới xuất sắc của văn học Việt Nam đương đại.",
+                    "Văn phong sắc sảo, lạnh lùng nhưng ẩn chứa sự trăn trở nhân sinh sâu sắc.",
+                    "Chuyên khai thác những góc khuất tâm lý và mối quan hệ giữa con người với tự nhiên."
+                ],
+                summarySec: [
+                    "Ông Diểu đi săn vào mùa xuân và bắn trúng con voọc đực trên núi cao.",
+                    "Chứng kiến tình cảnh thương cảm và sự chung thủy của con voọc cái cùng tiếng kêu đau đớn.",
+                    "Ông Diểu bừng tỉnh, buông súng thả gia đình voọc đi và trở về dưới cơn mưa xuân với hình ảnh hoa muối nở trắng."
+                ],
+                contentSec: [
+                    "Thức tỉnh bản tính thiện lương, lòng trắc ẩn vốn có trong tâm hồn mỗi con người.",
+                    "Phản ánh mối quan hệ gắn bó, thiêng liêng giữa con người và tự nhiên hoang dã.",
+                    "Triết lý sâu sắc: Sự bao dung và tình yêu thương mang lại sự thanh thản thực sự cho cuộc đời."
+                ],
+                artSec: [
+                    "Nghệ thuật xây dựng tình huống truyện đảo ngược tâm lý đặc sắc.",
+                    "Hình ảnh biểu tượng đa nghĩa mang đậm chất triết lý (loài hoa muối của rừng).",
+                    "Giọng văn đốn hậu, giàu chất thơ và dư vị chiêm nghiệm."
+                ]
+            },
+            {
+                id: 4,
+                title: "Hải Khẩu Linh Từ",
+                author: "Nguyễn Dữ (Trích 'Truyền kỳ mạn lục')",
+                genre: "Truyện truyền kỳ",
+                isUpdating: false,
+                authorSec: [
+                    "Nguyễn Dữ là bậc cao nhân thế kỷ XVI, tác giả kiệt xuất của thể loại truyền kỳ trung đại Việt Nam.",
+                    "Tác phẩm 'Truyền kỳ mạn lục' được coi là 'thiên cổ kỳ bút' mang đậm tinh thần nhân đạo.",
+                    "Sự kết hợp nhuần nhuyễn giữa yếu tố hoang đường kỳ ảo và hiện thực đời sống."
+                ],
+                summarySec: [
+                    "Xoay quanh ngôi đền thiêng ở cửa biển (Hải khẩu) gắn liền với những hiển linh và sự tích bi tráng.",
+                    "Phản ánh số phận con người, luật nhân quả và công lý minh bạch của thần linh nơi chốn linh thiêng.",
+                    "Ca ngợi những tấm lòng trung nghĩa, tiết hạnh và trừng trị cái ác."
+                ],
+                contentSec: [
+                    "Thể hiện niềm tin nhân dân vào đạo lý ở hiền gặp lành, ác giả ác báo.",
+                    "Tôn vinh khí tiết trung can nghĩa đảm, lòng biết ơn đối với người có công với nước.",
+                    "Gửi gắm những trăn trở của tác giả về thế sự thời phong kiến suy vi."
+                ],
+                artSec: [
+                    "Nghệ thuật kết hợp yếu tố kỳ ảo, thần thoại với cốt truyện lịch sử.",
+                    "Kết cấu chặt chẽ, giọng văn trang trọng, uy nghiêm.",
+                    "Sử dụng điển tích, điển cố Hán học uyên bác, giàu giá trị biểu tượng."
+                ]
+            },
+            {
+                id: 5,
+                title: "Mùa Lá Rụng Trong Vườn",
+                author: "Ma Văn Kháng",
+                genre: "Tiểu thuyết hiện đại",
+                isUpdating: false,
+                authorSec: [
+                    "Ma Văn Kháng là nhà văn xuất sắc của văn học Việt Nam thời kỳ Đổi mới.",
+                    "Nhạy bén với những chuyển biến tâm lý xã hội và nhịp sống đô thị.",
+                    "Ngòi bút giàu chất trữ tình, ấm áp tình người và chiều sâu văn hóa truyền thống."
+                ],
+                summarySec: [
+                    "Bối cảnh diễn ra vào chiều 30 Tết tại ngôi nhà cổ kính của gia đình ông Bằng.",
+                    "Không khí sửa sang nhà cửa, chuẩn bị mâm cỗ Tất niên vô cùng khẩn trương và ấm áp.",
+                    "Lễ cúng gia tiên linh thiêng diễn ra với sự nghiêm cẩn của ông Bằng cùng các con dâu.",
+                    "Gợi lại nếp nhà nề nếp, tình cảm gia đình thắm thiết trước những biến động của thời đại."
+                ],
+                contentSec: [
+                    "Tôn vinh vẻ đẹp văn hóa cội nguồn và nếp nhà truyền thống của người Việt.",
+                    "Khẳng định gia đình là xóm làng tâm hồn, là nơi nương tựa vững chắc nhất của con người.",
+                    "Cảnh báo trách nhiệm giữ gìn bản sắc trước làn sóng kinh tế thị trường xâm nhập."
+                ],
+                artSec: [
+                    "Khắc họa không khí chiều 30 Tết thiêng liêng, sống động và đậm đà bản sắc.",
+                    "Miêu tả diễn biến tâm lý nhân vật tinh tế, nhạy cảm.",
+                    "Ngôn ngữ văn xuôi đồn hậu, giàu chất thơ và dư vị hoài niệm."
+                ]
+            },
+            {
+                id: 6,
+                title: "Cảm Hoài (Thuật Hoài)",
+                author: "Đặng Dung",
+                genre: "Thơ thất ngôn đường luật",
+                isUpdating: false,
+                authorSec: [
+                    "Đặng Dung (?-1414) là danh tướng kiệt xuất thời Hậu Trần.",
+                    "Một chí sĩ giàu lòng yêu nước, bất khuất và trăn trở sâu sắc với thời thế.",
+                    "Hồn thơ trĩu nặng chí lớn chưa thành nhưng vẹn toàn khí tiết anh hùng."
+                ],
+                summarySec: [
+                    "Bài thơ là lời bộc bạch nỗi lòng u hoài của tác giả khi tuổi đời đã cao.",
+                    "Thế sự tuột khỏi tầm tay, sự nghiệp khôi phục đất nước còn dở dang.",
+                    "Hình ảnh mài gươm dưới nguyệt thể hiện ý chí chiến đấu bền bỉ không ngừng."
+                ],
+                contentSec: [
+                    "Bi kịch cay đắng của người anh hùng lỡ vận trước thời cuộc.",
+                    "Khẳng định khí tiết kiên trung, lòng yêu nước nồng nàn không bao giờ dập tắt.",
+                    "Vẻ đẹp nhân cách cao cả, phụng sự tổ quốc đến hơi thở cuối cùng."
+                ],
+                artSec: [
+                    "Thể thơ thất ngôn bát cú Đường luật chuẩn mực, cô đọng.",
+                    "Hình ảnh thơ hoành tráng (mài gươm dưới nguyệt).",
+                    "Giọng thơ trầm hùng, bi xót nhưng tràn đầy hào khí."
+                ]
+            },
+            {
+                id: 7,
+                title: "Tây Tiến",
+                author: "Quang Dũng",
+                genre: "Thơ trữ tình",
+                isUpdating: false,
+                authorSec: [
+                    "Quang Dũng (1921 - 1988) là gương mặt tiêu biểu của thơ ca kháng chiến chống Pháp.",
+                    "Một nghệ sĩ đa tài: viết văn, làm thơ, vẽ tranh và soạn nhạc.",
+                    "Hồn thơ lãng mạn, hào hoa, tinh tế và giàu chất hội họa."
+                ],
+                summarySec: [
+                    "Nỗi nhớ da diết của tác giả về đoàn quân Tây Tiến và miền Tây Bắc.",
+                    "Chặng đường hành quân gian khổ trên nền thiên nhiên Tây Bắc hùng vĩ, dữ dội.",
+                    "Tái hiện hình ảnh đêm liên hoan đuốc hoa ấm áp tình quân dân.",
+                    "Tượng đài bất tử về người lính Tây Tiến bi hùng và sự hy sinh oanh liệt."
+                ],
+                contentSec: [
+                    "Khắc họa vóc dáng hào hoa, lãng mạn và tinh thần xả thân vì tổ quốc của người lính Hà Thành.",
+                    "Vẻ đẹp thơ mộng nhưng hoang sơ, hiểm trở của núi rừng miền Tây.",
+                    "Tình đồng chí, tình quân dân thắm thiết trong gian khổ chiến tranh."
+                ],
+                artSec: [
+                    "Bút pháp lãng mạn kết hợp cảm hứng bi hùng.",
+                    "Ngôn ngữ và hình ảnh giàu chất hội họa, âm nhạc.",
+                    "Sử dụng từ Hán Việt gợi không khí cổ kính, trang trọng."
+                ]
+            },
+            {
+                id: 8,
+                title: "Đàn Ghi Ta Của Lor-ca",
+                author: "Thanh Thảo",
+                genre: "Thơ tự do hiện đại",
+                isUpdating: false,
+                authorSec: [
+                    "Thanh Thảo là nhà thơ luôn nỗ lực đổi mới hình thức thơ Việt Nam.",
+                    "Sở trường với tiếng thơ giàu tính suy tư, tượng trưng và siêu thực.",
+                    "Luôn hướng về những số phận nghệ sĩ bi kịch và khát vọng tự do."
+                ],
+                summarySec: [
+                    "Khắc họa hình ảnh nhà thơ tự do Tây Ban Nha Lor-ca đấu tranh chống phát xít.",
+                    "Bi kịch Lor-ca bị sát hại dã man và sự xót thương của nhân loại.",
+                    "Sức sống bất tử của tiếng đàn ghi ta và hành trình nghệ thuật tự do."
+                ],
+                contentSec: [
+                    "Thể hiện nỗi đau xót sâu sắc trước cái chết bi phẫn của thiên tài Lor-ca.",
+                    "Tôn vinh sức sống mãnh liệt, không thể tiêu diệt của nghệ thuật chân chính.",
+                    "Khát vọng tự do và cách tân nghệ thuật kiên cường."
+                ],
+                artSec: [
+                    "Thể thơ tự do, hình ảnh tượng trưng - siêu thực đa nghĩa.",
+                    "Mô phỏng chuỗi âm thanh tiếng đàn (li-la li-la).",
+                    "Cấu trúc kết hợp chất nhạc và chất thơ độc đáo."
+                ]
+            },
+            {
+                id: 9,
+                title: "Cuộc Đời Của Pi",
+                author: "Yann Martel",
+                genre: "Tiểu thuyết phiêu lưu",
+                isUpdating: false,
+                authorSec: [
+                    "Yann Martel là nhà văn nổi tiếng người Canada.",
+                    "Tác phẩm 'Cuộc đời của Pi' đoạt giải Man Booker năm 2002.",
+                    "Phong cách sáng tác kết hợp tưởng tượng triết lý và phiêu lưu kỳ ảo."
+                ],
+                summarySec: [
+                    "Chuyến phiêu lưu sinh tồn 227 ngày trên Thái Bình Dương của cậu bé Pi.",
+                    "Sự chung sống kỳ lạ trên xuồng cứu sinh giữa Pi và con hổ Bengal Richard Parker.",
+                    "Trải qua bão tố, đói khát và nỗi cô đơn cùng cực để dành lại sự sống."
+                ],
+                contentSec: [
+                    "Ngợi ca bản năng sinh tồn và nghị lực phi thường của con người.",
+                    "Ý nghĩa thiêng liêng của niềm tin tín ngưỡng và tình yêu cuộc sống.",
+                    "Mối quan hệ vi diệu giữa con người và thiên nhiên hoang dã."
+                ],
+                artSec: [
+                    "Lối kể chuyện cuốn hút, giàu sức tưởng tượng.",
+                    "Đẩy nhân vật vào tình huống sinh tồn khắc nghiệt.",
+                    "Kết hợp nhuần nhuyễn giữa yếu tố hiện thực và triết lý tâm linh."
+                ]
+            },
+            {
+                id: 10,
+                title: "Tác phẩm tiếp theo đang cập nhật",
+                author: "Đang biên soạn nội dung",
+                genre: "Sắp ra mắt",
+                isUpdating: true,
+                authorSec: ["Nội dung chuyên sâu của tác phẩm này đang được cập nhật và biên soạn theo chuẩn chương trình Kết Nối Tri Thức."],
+                summarySec: ["Sẽ sớm cập nhật tóm tắt cốt truyện và nội dung cốt lõi."],
+                contentSec: ["Sẽ sớm cập nhật giá trị nội dung và ý nghĩa nhân văn."],
+                artSec: ["Sẽ sớm cập nhật các đặc sắc về nghệ thuật."]
+            }
+        ];
+
+        const quizDatabase = [
+            [
+                { q: "Tác phẩm 'Xuân Tóc Đỏ cứu quốc' thuộc thể loại nào?", a: ["Tiểu thuyết trào phúng", "Kịch nói", "Truyện ngắn lãng mạn", "Thơ tự do"], c: 0 },
+                { q: "Tác giả của tác phẩm 'Số Đỏ' là ai?", a: ["Nam Cao", "Vũ Trọng Phụng", "Ngô Tất Tố", "Thạch Lam"], c: 1 }
+            ]
+        ];
+
+        let currentWorkIndex = 0;
+        let forumTopics = [];
+        let activeTopicId = null;
+        let activeExamQuestions = [];
+        let examTimerInterval = null;
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('intro-splash');
+                const modal = document.getElementById('info-modal');
+                splash.style.opacity = '0';
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    modal.classList.remove('hidden');
+                }, 700);
+            }, 1800);
+        });
+
+        function enterMainApp() {
+            const modal = document.getElementById('info-modal');
+            const mainApp = document.getElementById('main-app');
+            
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                mainApp.style.opacity = '1';
+                initApplication();
+            }, 500);
+        }
+
+        function initApplication() {
+            renderTocDropdownMenu();
+            populatePracticeSelect();
+            selectBookWork(0);
+            initNotesData();
+            startCountdownTimer();
+        }
+
+        function startCountdownTimer() {
+            const examDate = new Date('June 26, 2027 07:00:00').getTime();
+
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = examDate - now;
+
+                if (distance < 0) return;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown-days').innerText = days.toString().padStart(2, '0');
+                document.getElementById('countdown-hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('countdown-mins').innerText = mins.toString().padStart(2, '0');
+                document.getElementById('countdown-secs').innerText = secs.toString().padStart(2, '0');
+            }, 1000);
+        }
+
+        function populatePracticeSelect() {
+            const select = document.getElementById('practice-select-work');
+            if (!select) return;
+            select.innerHTML = '';
+            worksDatabase.filter(w => !w.isUpdating).forEach((w, idx) => {
+                select.innerHTML += `<option value="${idx}">${idx + 1}. ${w.title} (${w.author})</option>`;
+            });
+        }
+
+        function switchTab(tabId) {
+            const tabs = ['home', 'library', 'tips', 'practice', 'notes', 'about'];
+            tabs.forEach(t => {
+                const panel = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`nav-${t}`);
+                if (panel) panel.classList.remove('active');
+                if (btn) {
+                    btn.classList.remove('text-taybac-gold', 'bg-forest-800');
+                    btn.classList.add('text-forest-100');
+                }
+            });
+
+            const activePanel = document.getElementById(`tab-${tabId}`);
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activePanel) activePanel.classList.add('active');
+            if (activeBtn) {
+                activeBtn.classList.add('text-taybac-gold', 'bg-forest-800');
+                activeBtn.classList.remove('text-forest-100');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function toggleTocMenu() {
+            const menu = document.getElementById('toc-dropdown-menu');
+            const chevron = document.getElementById('toc-chevron');
+            menu.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+        }
+
+        function renderTocDropdownMenu() {
+            const menu = document.getElementById('toc-dropdown-menu');
+            if (!menu) return;
+            menu.innerHTML = '';
+
+            worksDatabase.forEach((w, idx) => {
+                const itemHtml = `
+                    <button onclick="selectBookWork(${idx}); toggleTocMenu()" class="w-full text-left p-2.5 rounded-xl hover:bg-forest-50 transition flex items-center justify-between text-xs space-x-2 border-b border-gray-100 last:border-0 cursor-pointer">
+                        <div>
+                            <p class="font-bold text-gray-900 ${w.isUpdating ? 'italic text-amber-700' : ''}">${idx + 1}. ${w.title}</p>
+                            <p class="text-[10px] text-gray-500">${w.author}</p>
+                        </div>
+                        <span class="text-[9px] font-bold px-1.5 py-0.5 rounded ${w.isUpdating ? 'bg-amber-100 text-amber-800' : 'bg-forest-100 text-forest-800'}">${w.genre}</span>
+                    </button>
+                `;
+                menu.innerHTML += itemHtml;
+            });
+        }
+
+        function selectBookWork(index) {
+            currentWorkIndex = index;
+            const w = worksDatabase[currentWorkIndex];
+
+            document.getElementById('current-work-badge').innerText = `Tác phẩm ${currentWorkIndex + 1}/${worksDatabase.length}: ${w.title}`;
+
+            const bookContainer = document.getElementById('book-two-pages');
+            bookContainer.classList.remove('book-flip-anim');
+            void bookContainer.offsetWidth;
+            bookContainer.classList.add('book-flip-anim');
+
+            document.getElementById('page-left-category').innerText = w.genre;
+            document.getElementById('page-left-title').innerText = w.author;
+            renderBulletList('page-left-content-list', w.authorSec);
+
+            document.getElementById('page-right-title').innerText = w.title;
+            renderBulletList('page-right-summary-list', w.summarySec);
+            renderBulletList('page-right-content-list', w.contentSec);
+            renderBulletList('page-right-art-list', w.artSec);
+        }
+
+        function prevBookPage() {
+            currentWorkIndex--;
+            if (currentWorkIndex < 0) currentWorkIndex = worksDatabase.length - 1;
+            selectBookWork(currentWorkIndex);
+        }
+
+        function nextBookPage() {
+            currentWorkIndex++;
+            if (currentWorkIndex >= worksDatabase.length) currentWorkIndex = 0;
+            selectBookWork(currentWorkIndex);
+        }
+
+        function renderBulletList(elementId, itemsArray) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            el.innerHTML = '';
+
+            itemsArray.forEach(item => {
+                const li = `
+                    <li class="flex items-start space-x-2">
+                        <i class="fa-solid fa-leaf text-forest-600 text-[10px] mt-1 flex-shrink-0"></i>
+                        <span>${item}</span>
+                    </li>
+                `;
+                el.innerHTML += li;
+            });
+        }
+
+        /* CHUYỂN ĐỔI GIỮA 2 PHẦN MẸO VIẾT VĂN: NLVH & NLXH */
+        function switchTipsTab(type) {
+            const btnNlvh = document.getElementById('btn-tip-nlvh');
+            const btnNlxh = document.getElementById('btn-tip-nlxh');
+            const contentNlvh = document.getElementById('content-tip-nlvh');
+            const contentNlxh = document.getElementById('content-tip-nlxh');
+
+            if (type === 'nlvh') {
+                btnNlvh.className = "flex-1 py-3 px-4 rounded-xl text-xs md:text-sm font-extrabold transition bg-forest-800 text-white shadow-md cursor-pointer flex items-center justify-center space-x-2";
+                btnNlxh.className = "flex-1 py-3 px-4 rounded-xl text-xs md:text-sm font-extrabold transition text-forest-900 hover:bg-forest-300 cursor-pointer flex items-center justify-center space-x-2";
+                contentNlvh.classList.remove('hidden');
+                contentNlxh.classList.add('hidden');
+            } else {
+                btnNlxh.className = "flex-1 py-3 px-4 rounded-xl text-xs md:text-sm font-extrabold transition bg-amber-700 text-white shadow-md cursor-pointer flex items-center justify-center space-x-2";
+                btnNlvh.className = "flex-1 py-3 px-4 rounded-xl text-xs md:text-sm font-extrabold transition text-forest-900 hover:bg-forest-300 cursor-pointer flex items-center justify-center space-x-2";
+                contentNlxh.classList.remove('hidden');
+                contentNlvh.classList.add('hidden');
+            }
+        }
+
+        function startWorkQuiz() {
+            const select = document.getElementById('practice-select-work');
+            const workIdx = parseInt(select.value);
+            const questions = quizDatabase[workIdx] || quizDatabase[0];
+            activeExamQuestions = questions.map(q => ({ ...q }));
+
+            document.getElementById('quiz-mode-badge').innerText = "Chế độ: Ôn tập bài học";
+            document.getElementById('quiz-title').innerText = worksDatabase[workIdx].title;
+            document.getElementById('quiz-timer').classList.add('hidden');
+            renderQuizQuestions();
+        }
+
+        function startRandomExam() {
+            switchTab('practice');
+            let allQ = [];
+            quizDatabase.forEach((workQs, wIdx) => {
+                workQs.forEach(q => {
+                    allQ.push({ ...q, workTitle: worksDatabase[wIdx].title });
+                });
+            });
+
+            for (let i = allQ.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [allQ[i], allQ[j]] = [allQ[j], allQ[i]];
+            }
+
+            activeExamQuestions = allQ.slice(0, 30);
+            document.getElementById('quiz-mode-badge').innerText = "Chế độ: Thi thử ngẫu nhiên";
+            document.getElementById('quiz-title').innerText = "Đề Thi Thử Môn Ngữ Văn 12 (30 Câu)";
+            document.getElementById('quiz-timer').classList.remove('hidden');
+            startExamTimer(2700);
+            renderQuizQuestions();
+        }
+
+        function renderQuizQuestions() {
+            document.getElementById('quiz-result').classList.add('hidden');
+            const container = document.getElementById('quiz-questions-list');
+            container.innerHTML = '';
+
+            activeExamQuestions.forEach((q, idx) => {
+                const titleInfo = q.workTitle ? `<span class="text-[10px] font-bold text-forest-700 block mb-1">[${q.workTitle}]</span>` : '';
+                let optsHtml = '';
+                q.a.forEach((opt, optIdx) => {
+                    optsHtml += `
+                        <label class="flex items-center space-x-2.5 p-3 rounded-xl border border-forest-200 bg-forest-50/30 hover:bg-forest-100/50 cursor-pointer transition text-xs text-forest-900">
+                            <input type="radio" name="q-${idx}" value="${optIdx}" class="text-forest-600 focus:ring-forest-500">
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+
+                container.innerHTML += `
+                    <div class="p-4 rounded-2xl bg-white border border-forest-200 space-y-2 shadow-sm">
+                        ${titleInfo}
+                        <h4 class="font-serif font-bold text-xs text-forest-950">Câu ${idx + 1}: ${q.q}</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1">${optsHtml}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('quiz-container').classList.remove('hidden');
+            window.scrollTo({ top: document.getElementById('quiz-container').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        function startExamTimer(seconds) {
+            if (examTimerInterval) clearInterval(examTimerInterval);
+            let timeLeft = seconds;
+            examTimerInterval = setInterval(() => {
+                timeLeft--;
+                const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+                const s = (timeLeft % 60).toString().padStart(2, '0');
+                document.getElementById('timer-text').innerText = `${m}:${s}`;
+                if (timeLeft <= 0) { clearInterval(examTimerInterval); submitQuiz(); }
+            }, 1000);
+        }
+
+        function submitQuiz() {
+            if (examTimerInterval) clearInterval(examTimerInterval);
+            let correct = 0;
+            const total = activeExamQuestions.length;
+
+            activeExamQuestions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="q-${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === q.c) correct++;
+            });
+
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('result-text').innerText = `Bạn trả lời đúng: ${correct} / ${total} câu (${Math.round((correct/total)*100)}%)`;
+            document.getElementById('result-feedback').innerText = "Hãy tiếp tục phát huy và ôn luyện đầy đủ các tác phẩm nhé!";
+            document.getElementById('quiz-result').classList.remove('hidden');
+        }
+
+        function closeQuizResult() {
+            document.getElementById('quiz-result').classList.add('hidden');
+        }
+
+        function initNotesData() {
+            const saved = localStorage.getItem('vk01_notes_v11');
+            if (saved) {
+                try { forumTopics = JSON.parse(saved); } catch(e) { forumTopics = []; }
+            }
+            if (forumTopics.length === 0) {
+                forumTopics = [{ id: 'note-1', title: 'Từ khóa trọng tâm', desc: 'Ghi chép từ khóa ôn thi.', messages: [{ author: "Học sinh", text: "Ôn kỹ phần cảm hứng lãng mạn bài Tây Tiến.", time: "09:00" }] }];
+                saveNotesData();
+            }
+            activeTopicId = forumTopics[0].id;
+            renderNotesChannels();
+            renderNotesMessages();
+        }
+
+        function saveNotesData() {
+            localStorage.setItem('vk01_notes_v11', JSON.stringify(forumTopics));
+        }
+
+        function renderNotesChannels() {
+            const container = document.getElementById('notes-channels-list');
+            if (!container) return;
+            container.innerHTML = '';
+            forumTopics.forEach(t => {
+                const isActive = t.id === activeTopicId;
+                container.innerHTML += `
+                    <button onclick="selectNoteTopic('${t.id}')" class="w-full text-left px-3 py-2 rounded-xl text-xs transition ${isActive ? 'bg-forest-600 text-white font-bold shadow' : 'text-forest-800 hover:bg-forest-100'} flex items-center space-x-2 cursor-pointer">
+                        <i class="fa-solid fa-bookmark text-[10px]"></i><span class="truncate">${t.title}</span>
+                    </button>
+                `;
+            });
+        }
+
+        function selectNoteTopic(topicId) {
+            activeTopicId = topicId;
+            renderNotesChannels();
+            renderNotesMessages();
+        }
+
+        function renderNotesMessages() {
+            const topic = forumTopics.find(t => t.id === activeTopicId) || forumTopics[0];
+            if (!topic) return;
+            document.getElementById('current-note-title').innerText = `# ${topic.title}`;
+            document.getElementById('current-note-desc').innerText = topic.desc;
+
+            const container = document.getElementById('notes-messages-container');
+            container.innerHTML = '';
+            if (!topic.messages || topic.messages.length === 0) {
+                container.innerHTML = `<p class="text-xs text-forest-500 italic text-center py-10">Chưa có ghi chép nào.</p>`;
+                return;
+            }
+            topic.messages.forEach(m => {
+                container.innerHTML += `
+                    <div class="p-3 rounded-xl bg-forest-50/50 border border-forest-200 space-y-1">
+                        <div class="flex items-center justify-between"><span class="font-bold text-xs text-forest-900">${m.author}</span><span class="text-[9px] text-forest-500">${m.time}</span></div>
+                        <p class="text-xs text-forest-800">${m.text}</p>
+                    </div>
+                `;
+            });
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function handleSendNoteMessage(e) {
+            e.preventDefault();
+            const author = document.getElementById('note-user-name').value.trim();
+            const text = document.getElementById('note-user-msg').value.trim();
+            if (!author || !text) return;
+            const topic = forumTopics.find(t => t.id === activeTopicId);
+            if (topic) {
+                if (!topic.messages) topic.messages = [];
+                const now = new Date();
+                topic.messages.push({ author, text, time: `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}` });
+                saveNotesData();
+                renderNotesMessages();
+                document.getElementById('note-user-msg').value = '';
+            }
+        }
+
+        function openNewNoteModal() { document.getElementById('modal-note').classList.remove('hidden'); }
+        function closeNewNoteModal() { document.getElementById('modal-note').classList.add('hidden'); }
+
+        function handleCreateNote(e) {
+            e.preventDefault();
+            const title = document.getElementById('new-note-title').value.trim();
+            const desc = document.getElementById('new-note-desc').value.trim();
+            if (!title || !desc) return;
+            const newId = `note-${Date.now()}`;
+            forumTopics.push({ id: newId, title, desc, messages: [] });
+            saveNotesData();
+            closeNewNoteModal();
+            document.getElementById('new-note-title').value = '';
+            document.getElementById('new-note-desc').value = '';
+            selectNoteTopic(newId);
+        }
+    </script>
+</body>
+</html>
